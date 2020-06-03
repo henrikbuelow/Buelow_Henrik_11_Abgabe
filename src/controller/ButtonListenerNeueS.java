@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import main.VLSucheMain;
+
 public class ButtonListenerNeueS implements ActionListener {
 	
 	private JButton suche;
@@ -28,6 +30,8 @@ public class ButtonListenerNeueS implements ActionListener {
 		ergebnisse.removeAllElements();
 		
 		prof.setText(null);
+		
+		//VLSucheMain.out.replaceAll("");
 		
 	}
 }

@@ -102,6 +102,7 @@ public class VLSucheFrame extends JFrame{
 	JPanel kleiner1;
 	JPanel kleiner2;
 	JButton export;
+	ButtonListenerExport ex;
 	
 	/**
 	 * Konstruktor der Klasse
@@ -263,6 +264,8 @@ public class VLSucheFrame extends JFrame{
 		kleiner2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		kleiner1.add(kleiner2);
 		export = new JButton("Ergebnisse als Text-Datei exportieren");
+		ex = new ButtonListenerExport(export);
+		export.addActionListener(ex);
 		kleiner2.add(export);
 	}
 	

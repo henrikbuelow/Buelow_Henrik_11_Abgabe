@@ -27,6 +27,12 @@ public class VLSucheMain {
 	
 	public static HashSet<Vorlesung> verzeichnis;
 	public static HashSet<Vorlesung> suche;
+	public static int zaehler;
+	
+	//public static BufferedReader r;
+	//public static BufferedWriter w;
+	
+	public static BufferedWriter out;
 	
 	public static void main(String[] args) {
 		
@@ -39,7 +45,14 @@ public class VLSucheMain {
 		
 		verzeichnis = new HashSet<Vorlesung>();
 		suche = new HashSet<Vorlesung>();
-
+		
+		try {
+			
+		out = new BufferedWriter(new FileWriter("vorlesungen.txt", false));
+		
+		} catch (IOException ioe) {
+			
+		}
 		
 	}
 	
