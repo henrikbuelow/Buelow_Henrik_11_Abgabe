@@ -38,7 +38,7 @@ public class VLSucheMain {
 		
 		VLSucheFrame myFrame = new VLSucheFrame();
 		myFrame.setTitle("VL Suche");
-		myFrame.setSize(800, 1000);
+		myFrame.setSize(800, 1100);
 		myFrame.setResizable(false);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.setVisible(true);

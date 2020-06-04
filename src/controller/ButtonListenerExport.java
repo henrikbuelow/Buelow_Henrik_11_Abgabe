@@ -26,7 +26,8 @@ public class ButtonListenerExport implements ActionListener{
 		try {
 			for (Vorlesung v : VLSucheMain.suche) {
 				
-				VLSucheMain.out.write("Ergebnisse Ihrer " + VLSucheMain.zaehler + ". Suche:");
+				VLSucheMain.out.write(VLSucheMain.zaehler + ". gespeichertes Ergebnis:");				
+				VLSucheMain.out.newLine();
 				VLSucheMain.out.write(v.toString());
 				VLSucheMain.out.newLine();
 				VLSucheMain.out.flush();

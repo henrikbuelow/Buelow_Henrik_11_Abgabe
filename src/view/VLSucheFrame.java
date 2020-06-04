@@ -77,15 +77,20 @@ public class VLSucheFrame extends JFrame{
 	JPanel profName2;
 	JPanel semester2;
 	
-	// JPanel profName
+	// JPanel profName2
 	JLabel profNameSchrift2;
 	JTextField profNameFeld2;
+	JPanel profName2Fehler;
 	
-	// JPanel semester
+	// JPanel profName2Fehler
+	JLabel fehler3;
+	JLabel fehler4;
+	
+	// JPanel semester2
 	JLabel semesterSchrift2;
 	JPanel semesterButton2;
 	
-	// JPanel semesterButton
+	// JPanel semesterButton2
 	JRadioButton sose2;
 	JRadioButton ws2;
 	ButtonGroup semesterGruppe2;
@@ -142,7 +147,7 @@ public class VLSucheFrame extends JFrame{
 		titel.add(titelSchrift);
 		titelFeld = new JTextField();
 		titel.add(titelFeld);
-		fehler1 = new JLabel("Bitte einen Titel eingeben!");
+		fehler1 = new JLabel("Bitte einen Titel eingeben!", SwingConstants.CENTER);
 		titel.add(fehler1);
 		fehler1.setVisible(false);
 		
@@ -151,7 +156,7 @@ public class VLSucheFrame extends JFrame{
 		profName.add(profNameSchrift);
 		profNameFeld = new JTextField();
 		profName.add(profNameFeld);	
-		fehler2 = new JLabel("Bitte einen Professor eingeben!");
+		fehler2 = new JLabel("Bitte einen Professor eingeben!", SwingConstants.CENTER);
 		profName.add(fehler2);
 		fehler2.setVisible(false);
 		
@@ -195,7 +200,7 @@ public class VLSucheFrame extends JFrame{
 		enter2.add(zweiteEingabe);
 		
 		// JPanel zweiteEingabe aufbauen
-		profName2 = new JPanel(new GridLayout(2,1));
+		profName2 = new JPanel(new GridLayout(3,1));
 		zweiteEingabe.add(profName2);
 		semester2 = new JPanel(new GridLayout(2,1));
 		zweiteEingabe.add(semester2);
@@ -204,7 +209,17 @@ public class VLSucheFrame extends JFrame{
 		profNameSchrift2 = new JLabel("Name des Professors", SwingConstants.CENTER);
 		profName2.add(profNameSchrift2);
 		profNameFeld2 = new JTextField();
-		profName2.add(profNameFeld2);	
+		profName2.add(profNameFeld2);
+		profName2Fehler = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		profName2.add(profName2Fehler);
+		
+		// JPanel profName2Fehler aufbauen
+		fehler3 = new JLabel("Bitte einen Professor eingeben!");
+		profName2Fehler.add(fehler3);
+		fehler3.setVisible(false);
+		fehler4 = new JLabel("Keine Vorlesung gefunden!");
+		profName2Fehler.add(fehler4);
+		fehler4.setVisible(false);
 		
 		// JPanel semester aufbauen
 		semesterSchrift2 = new JLabel("Semester", SwingConstants.CENTER);
@@ -242,20 +257,29 @@ public class VLSucheFrame extends JFrame{
 		
 		// Sechstes Panel aufbauen
 		list = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		//list.setPreferredSize(new Dimension(1000,1000));
 		c.add(list);
 		//model = new DefaultListModel<>();
 		//ergebnisse = new JList<>( model );
 		//ergebnisse = new JList<String>();
 		listModel = new DefaultListModel<>(); 
 		ergebnisse = new JList<String>(listModel);
-		//add(new JScrollPane(ergebnisse));
-		ButtonListenerSuchen such = new ButtonListenerSuchen(profNameFeld2, ws2, listModel, enterButton2, neueSuche);
+		JScrollPane scroll = new JScrollPane(ergebnisse, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		//JScrollPane scrollH = new JScrollPane(ergebnisse, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//add(new JScrollPane(listModel));
+		ButtonListenerSuchen such = new ButtonListenerSuchen(profNameFeld2, ws2, listModel, enterButton2, neueSuche, fehler3, fehler4);
 		//ergebnisse = new JList<String>(listModel);
 		enterButton2.addActionListener(such);
-		list.add(ergebnisse);
+		//JScrollPane scrollpane = new JScrollPane(ergebnisse,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		//JScrollPane scrollPane = new JScrollPane(ergebnisse);
+		//west.add(scrollPane);
+		//scrollPane.setViewportView(ergebnisse);
+		//scrollPane.setVisible(true);
+		//ergebnisse.setLayoutOrientation(JList.VERTICAL);
+		list.add(scroll);
 		
 		//ButtonListener für enterButton2 und neueSuche
-		neueS = new ButtonListenerNeueS(enterButton2, neueSuche, listModel, profNameFeld2);
+		neueS = new ButtonListenerNeueS(enterButton2, neueSuche, listModel, profNameFeld2, fehler3, fehler4, ws2);
 		neueSuche.addActionListener(neueS);
 		
 		// Siebtes Panel aufbauen
@@ -263,29 +287,11 @@ public class VLSucheFrame extends JFrame{
 		c.add(kleiner1);
 		kleiner2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		kleiner1.add(kleiner2);
-		export = new JButton("Ergebnisse als Text-Datei exportieren");
+		export = new JButton("Ergebnisse in Text-Datei schreiben");
 		ex = new ButtonListenerExport(export);
 		export.addActionListener(ex);
+		//export.setVisible(false);
 		kleiner2.add(export);
-	}
-	
-	/*public String getTitle() {
-		return titelFeld.getText();
-	}
-	
-	public String getProf() {
-		return profNameFeld.getText();
-	}
-	
-	public String getSemester() {
-		String s;
 		
-		if (sose.isSelected()) {
-			s = "Sommersemester";
-		} else {
-			s = "Wintersemester";
-		}
-		
-		return s;
-	}*/
+	}
 }
