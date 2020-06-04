@@ -3,7 +3,6 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 import controller.*;
-import java.awt.event.*;
 
 /**
  * Diese Klasse stellt das Fester für die VL_Suche dar.
@@ -15,6 +14,12 @@ import java.awt.event.*;
 
 public class VLSucheFrame extends JFrame{
 
+	/**
+	 * SerialVersionUID zur Identifikation der Version der serialisierbaren Klasse 
+	 */
+	
+	private static final long serialVersionUID = 1L;
+
 	//Allgemein
 	private Font ueberschrift;
 
@@ -22,7 +27,7 @@ public class VLSucheFrame extends JFrame{
 	Container c;
 	
 	// Erstes Panel
-		JPanel erstes;
+	JPanel erstes;
 		
 	// Panel erstes
 	JPanel enter;
@@ -99,15 +104,11 @@ public class VLSucheFrame extends JFrame{
 	
 	// Drittes Panel
 	JLabel ergebnisTitel;
-	
-	// Sechstes Panel
 	JPanel list;
 	DefaultListModel<String> listModel;
 	JList<String> ergebnisse;
 	
-	//siebtes Panel
-	//JPanel kleiner1;
-	//JPanel kleiner2;
+	// Button zum Export der Ergebnisse
 	JButton export;
 	ButtonListenerExport ex;
 	
@@ -252,8 +253,6 @@ public class VLSucheFrame extends JFrame{
 		enterButton2 = new JButton("Suchen");
 		enterUnten2.add(enterButton2);
 		neueSuche = new JButton("Suche neustarten");
-		//neueS = new ButtonListenerNeueS(enterButton2, neueSuche, listModel);
-		//neueSuche.addActionListener(neueS);
 		enterUnten2.add(neueSuche);
 		neueSuche.setVisible(false);
 		
@@ -264,41 +263,23 @@ public class VLSucheFrame extends JFrame{
 		
 		// Sechstes Panel aufbauen
 		list = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		//list.setPreferredSize(new Dimension(1000,1000));
 		c.add(list);
 		list.add(ergebnisTitel);
-		//model = new DefaultListModel<>();
-		//ergebnisse = new JList<>( model );
-		//ergebnisse = new JList<String>();
 		listModel = new DefaultListModel<>(); 
 		ergebnisse = new JList<String>(listModel);
 		JScrollPane scroll = new JScrollPane(ergebnisse, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		//JScrollPane scrollH = new JScrollPane(ergebnisse, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		//add(new JScrollPane(listModel));
 		ButtonListenerSuchen such = new ButtonListenerSuchen(profNameFeld2, ws2, listModel, enterButton2, neueSuche, fehler3, fehler4);
-		//ergebnisse = new JList<String>(listModel);
 		enterButton2.addActionListener(such);
-		//JScrollPane scrollpane = new JScrollPane(ergebnisse,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		//JScrollPane scrollPane = new JScrollPane(ergebnisse);
-		//west.add(scrollPane);
-		//scrollPane.setViewportView(ergebnisse);
-		//scrollPane.setVisible(true);
-		//ergebnisse.setLayoutOrientation(JList.VERTICAL);
 		list.add(scroll);
 		
 		//ButtonListener für enterButton2 und neueSuche
 		neueS = new ButtonListenerNeueS(enterButton2, neueSuche, listModel, profNameFeld2, fehler3, fehler4, ws2);
 		neueSuche.addActionListener(neueS);
 		
-		// Siebtes Panel aufbauen
-		/*kleiner1 = new JPanel(new GridLayout(1,3));
-		c.add(kleiner1);
-		kleiner2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		kleiner1.add(kleiner2);*/
+		// Button zum Export der Ergebnisse aufbauen
 		export = new JButton("Ergebnisse in Text-Datei schreiben");
-		ex = new ButtonListenerExport(export);
+		ex = new ButtonListenerExport();
 		export.addActionListener(ex);
-		//export.setVisible(false);
 		enterUnten2.add(export);
 		
 	}

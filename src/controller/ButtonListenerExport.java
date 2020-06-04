@@ -1,28 +1,34 @@
 package controller;
 
 import java.awt.event.*;
-import javax.swing.*;
-
 import main.VLSucheMain;
-
 import java.io.*;
 import model.*;
 
+/**
+ * Diese Klasse stellt den ActionListener für den Button export bereit
+ * 
+ * @author Henrik Bülow - ucxbi@student.kit.edu
+ * @version 2020-06-04
+ *
+ */
+
 public class ButtonListenerExport implements ActionListener{
 	
-	private JButton export;
-	
-	public ButtonListenerExport(JButton export) {
-		this.export = export;
-	}
+	/**
+	 * Diese Methode überschreibt die actionPerformed()-Methode des Interface ActionListener.
+	 * Die Methode schreibt die gesuchten Vorlesungen in die Textdatei vorlesungen.txt.
+	 * 
+	 * @param e
+	 * 			
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println(VLSucheMain.suche);
-		
 		VLSucheMain.zaehler++;
 		
+		//Schreibe über den BufferedWriter out die gewünschten Vorlesungen in die TextDatei
 		try {
 			
 			VLSucheMain.out.write(VLSucheMain.zaehler + ". gespeichertes Ergebnis:");				

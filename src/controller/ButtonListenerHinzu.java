@@ -30,13 +30,6 @@ public class ButtonListenerHinzu implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if (titelField.getText().equalsIgnoreCase("Ihre Eingabe war ein Duplikat!")) {
-			
-			fehler1.setVisible(true);
-			titelField.setText(null);
-			
-		} else {
-		
 			if ((titelField.getText().equals("")) && !(profNameField.getText().equals(""))) { 
 				
 				fehler1.setVisible(true); 
@@ -66,29 +59,33 @@ public class ButtonListenerHinzu implements ActionListener {
 					semester = "Sommersemester";
 				}
 				
-				boolean istEnthalten = false;
+				VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
+			
+				//boolean istEnthalten = false;
 				
-				for(Vorlesung v : VLSucheMain.verzeichnis) {
-					if (this.title.equalsIgnoreCase(v.getTitel()) && this.profName.equalsIgnoreCase(v.getProf()) && this.semester.equalsIgnoreCase(v.getSemester())) {
-						istEnthalten = true;
-					}
-				}
+				//for(Vorlesung v : VLSucheMain.verzeichnis) {
+					//VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
+					/*if (this.title.equalsIgnoreCase(v.getTitel()) && this.profName.equalsIgnoreCase(v.getProf()) && this.semester.equalsIgnoreCase(v.getSemester())) {
+						//istEnthalten = true;
+						VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
+					}*/
+				//}
 				
-				if(istEnthalten == false) {
+				/*if(istEnthalten == false) {
 					VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
 					System.out.println(istEnthalten);
 					titelField.setText(null);
 				} else {
 					titelField.setText("Ihre Eingabe war ein Duplikat!");
 				}
-				
+				*/
 				//System.out.println(VLSucheMain.verzeichnis.size());
 				//System.out.println(new Vorlesung(title, profName, semester));
 				
+				titelField.setText(null);
 				profNameField.setText(null);
 				ws.setSelected(true);
 			
-			}
 		}
 	}
 }

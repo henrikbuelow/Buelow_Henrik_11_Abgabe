@@ -1,12 +1,11 @@
 package main;
 
 import view.*;
-import controller.*;
 import model.*;
-import java.awt.*;
 import javax.swing.*;
 import java.io.*;
-import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Diese Klasse enthält die main-Methode der VL_Suche.
@@ -21,31 +20,32 @@ public class VLSucheMain {
 	/**
 	 * Main-Methode des Projektes
 	 * 
-	 * @param args Kommandozeilenparameter
+	 * @param args 
+	 * 		Kommandozeilenparameter
 	 * 
 	 */
 	
-	public static HashSet<Vorlesung> verzeichnis;
-	public static HashSet<Vorlesung> suche;
+	public static Set<Vorlesung> verzeichnis;
+	public static Set<Vorlesung> suche;
 	public static int zaehler;
-	
-	//public static BufferedReader r;
-	//public static BufferedWriter w;
 	
 	public static BufferedWriter out;
 	
 	public static void main(String[] args) {
 		
+		// Instanz der Klasse VLSucheFrame erstellen
 		VLSucheFrame myFrame = new VLSucheFrame();
-		myFrame.setTitle("VL Suche");
+		myFrame.setTitle("VL_Suche");
 		myFrame.setSize(800, 800);
 		myFrame.setResizable(false);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.setVisible(true);
 		
-		verzeichnis = new HashSet<Vorlesung>();
-		suche = new HashSet<Vorlesung>();
+		// TreeSet verzeichnis und suche erstellen zum speichern der Vorlesungen
+		verzeichnis = new TreeSet<Vorlesung>();
+		suche = new TreeSet<Vorlesung>();
 		
+		// BufferedWriter out erstellen um die Vorlesungen auf die TextDatei zu schreiben
 		try {
 			
 		out = new BufferedWriter(new FileWriter("vorlesungen.txt", false));
@@ -53,7 +53,5 @@ public class VLSucheMain {
 		} catch (IOException ioe) {
 			
 		}
-		
 	}
-	
 }

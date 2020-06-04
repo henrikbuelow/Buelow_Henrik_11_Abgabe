@@ -1,11 +1,11 @@
 package controller;
 
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
-import main.VLSucheMain;
+//import main.VLSucheMain;
 
 public class ButtonListenerNeueS implements ActionListener {
 	

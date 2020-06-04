@@ -1,20 +1,22 @@
 package controller;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import model.VLSucheController;
-import view.*;
 import main.*;
 import model.*;
+
+/**
+ * Diese Klasse stellt den ActionListener für den Button enterButton2 bereit
+ * 
+ * @author Henrik Bülow - ucxbi@student.kit.edu
+ * @version 2020-06-04
+ *
+ */
 
 public class ButtonListenerSuchen implements ActionListener {
 	
 	private String prof;
 	private String semester;
-	
-	private String text;
 	
 	private JTextField profNameFeld2;
 	private JRadioButton ws2;
@@ -23,6 +25,18 @@ public class ButtonListenerSuchen implements ActionListener {
 	private JButton neueSuche;
 	private JLabel fehler3;
 	private JLabel fehler4;
+	
+	/**
+	 * Konstruktor der Klasse ButtonListenerSuchen
+	 * 
+	 * @param profNameFeld2
+	 * @param ws2
+	 * @param ergebnisse
+	 * @param enter
+	 * @param neueSuche
+	 * @param fehler3
+	 * @param fehler4
+	 */
 	
 	public ButtonListenerSuchen(JTextField profNameFeld2, JRadioButton ws2, DefaultListModel<String> ergebnisse, JButton enter, JButton neueSuche, JLabel fehler3, JLabel fehler4) {
 		
@@ -36,6 +50,15 @@ public class ButtonListenerSuchen implements ActionListener {
 		
 	}
 
+	/**
+	 * Diese Methode überschreibt die actionPerformed()-Methode des Interface ActionListener.
+	 * Diese Methode sucht nach Übereinstimmungen, speichert gefundene Vorlesuungen im TreeSet suche
+	 * und schreibt die Ergebnisse in die JList.
+	 * 
+	 * @param e
+	 * 			
+	 */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -49,7 +72,6 @@ public class ButtonListenerSuchen implements ActionListener {
 			VLSucheMain.suche.clear();
 			
 			this.prof = profNameFeld2.getText();
-			//System.out.println(this.prof);
 			
 			if (ws2.isSelected()) {
 				this.semester = "Wintersemester";
