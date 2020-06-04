@@ -8,7 +8,7 @@ import controller.*;
  * Diese Klasse stellt das Fester für die VL_Suche dar.
  * 
  * @author Henrik Bülow - ucxbi@student.kit.edu
- * @version 2020-06-02
+ * @version 2020-06-04
  * 
  */
 

@@ -11,12 +11,18 @@ import java.util.TreeSet;
  * Diese Klasse enthält die main-Methode der VL_Suche.
  * 
  * @author Henrik Bülow - ucxbi@student.kit.edu
- * @version 2020-06-02
+ * @version 2020-06-04
  * 
  */
 
 public class VLSucheMain {
-
+	
+	public static Set<Vorlesung> verzeichnis;
+	public static Set<Vorlesung> suche;
+	public static int zaehler;
+	
+	public static BufferedWriter out;
+	
 	/**
 	 * Main-Methode des Projektes
 	 * 
@@ -24,12 +30,6 @@ public class VLSucheMain {
 	 * 		Kommandozeilenparameter
 	 * 
 	 */
-	
-	public static Set<Vorlesung> verzeichnis;
-	public static Set<Vorlesung> suche;
-	public static int zaehler;
-	
-	public static BufferedWriter out;
 	
 	public static void main(String[] args) {
 		

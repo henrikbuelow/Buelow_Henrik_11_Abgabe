@@ -30,12 +30,19 @@ public class ButtonListenerSuchen implements ActionListener {
 	 * Konstruktor der Klasse ButtonListenerSuchen
 	 * 
 	 * @param profNameFeld2
+	 * 		JTextField zum einlesen des Namen des Profs nach dem gesucht wird
 	 * @param ws2
+	 * 		JRadioButton zum einlesen des Semesters nach dem gesucht wird
 	 * @param ergebnisse
+	 * 		DefaultListModel zum abgleichen der Ergebnisse
 	 * @param enter
+	 * 		JButton der in der Methode unsichtbar gemacht werden soll
 	 * @param neueSuche
+	 * 		JButton der in der Methode sichtbar gemacht werden soll
 	 * @param fehler3
+	 * 		JLabel zum Anzeigen falls der Prof der VL fehlt
 	 * @param fehler4
+	 * 		JLabel zum Anzeigen dass nichts gefunden wurd
 	 */
 	
 	public ButtonListenerSuchen(JTextField profNameFeld2, JRadioButton ws2, DefaultListModel<String> ergebnisse, JButton enter, JButton neueSuche, JLabel fehler3, JLabel fehler4) {
@@ -56,6 +63,7 @@ public class ButtonListenerSuchen implements ActionListener {
 	 * und schreibt die Ergebnisse in die JList.
 	 * 
 	 * @param e
+	 * 		übergebenes ActionEvent
 	 * 			
 	 */
 	

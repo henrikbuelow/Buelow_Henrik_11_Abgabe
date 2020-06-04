@@ -6,7 +6,7 @@ import java.io.*;
 import model.*;
 
 /**
- * Diese Klasse stellt den ActionListener für den Button export bereit
+ * Diese Klasse stellt den ActionListener für den Button export bereit.
  * 
  * @author Henrik Bülow - ucxbi@student.kit.edu
  * @version 2020-06-04
@@ -20,7 +20,7 @@ public class ButtonListenerExport implements ActionListener{
 	 * Die Methode schreibt die gesuchten Vorlesungen in die Textdatei vorlesungen.txt.
 	 * 
 	 * @param e
-	 * 			
+	 * 		übergebenes ActionEvent	
 	 */
 
 	@Override

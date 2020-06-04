@@ -4,7 +4,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import model.*;
 import main.*;
-//import view.VLSucheFrame;
+
+/**
+ * Diese Klasse stellt den ActionListener für den Button enterButton bereit.
+ * 
+ * @author Henrik Bülow - ucxbi@student.kit.edu
+ * @version 2020-06-04
+ *
+ */
 
 public class ButtonListenerHinzu implements ActionListener {
 
@@ -18,7 +25,24 @@ public class ButtonListenerHinzu implements ActionListener {
 	private JLabel fehler1;
 	private JLabel fehler2;
 	
+	/**
+	 * Konstruktor der Klasse ButtonListenerHinzu
+	 * 
+	 * @param titelField
+	 * 		JTextField zum Einlesen des Titels der Vorlesung (VL)
+	 * @param profNameField
+	 * 		JTextField zum Einlesen des Profs der VL
+	 * @param ws
+	 * 		JRadioButton zum Einlesen des Semesters der VL
+	 * @param fehler1
+	 * 		JLabel zum Anzeigen falls der Titel der VL fehlt
+	 * @param fehler2
+	 * 		JLabel zum Anzeigen falls der Prof der VL fehlt
+	 * 
+	 */
+	
 	public ButtonListenerHinzu(JTextField titelField, JTextField profNameField, JRadioButton ws, JLabel fehler1, JLabel fehler2) {
+		
 		this.titelField = titelField;
 		this.profNameField = profNameField;
 		this.ws = ws;
@@ -27,64 +51,55 @@ public class ButtonListenerHinzu implements ActionListener {
 		
 	}
 	
+	/**
+	 * Diese Methode überschreibt die actionPerformed()-Methode des Interface ActionListener.
+	 * Diese Methode prüft die eingelesenen Vorlesungen und fügt diese dem TreeSet hinzu.
+	 * 
+	 * @param e
+	 * 		übergebenes ActionEvent
+	 * 			
+	 */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-			if ((titelField.getText().equals("")) && !(profNameField.getText().equals(""))) { 
-				
-				fehler1.setVisible(true); 
-				fehler2.setVisible(false);
-				
-			} else if (!(titelField.getText().equals("")) && (profNameField.getText().equals(""))) { 
-				
-				fehler1.setVisible(false);
-				fehler2.setVisible(true);
-				
-			} else if ((titelField.getText().equals("")) && (profNameField.getText().equals(""))) {
-				
-				fehler1.setVisible(true);
-				fehler2.setVisible(true);
-				
-			} else if (!(titelField.getText().equals("")) && !(profNameField.getText().equals(""))){
+		// kontrollieren ob einer oder beide der Text Felder leer sind
+		if ((titelField.getText().equals("")) && !(profNameField.getText().equals(""))) { 
 			
-				fehler1.setVisible(false);
-				fehler2.setVisible(false);
-					
-				title = titelField.getText();
-				profName = profNameField.getText();
-				
-				if (ws.isSelected()) {
-					semester = "Wintersemester";
-				} else {
-					semester = "Sommersemester";
-				}
-				
-				VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
+			fehler1.setVisible(true); 
+			fehler2.setVisible(false);
 			
-				//boolean istEnthalten = false;
+		} else if (!(titelField.getText().equals("")) && (profNameField.getText().equals(""))) { 
+			
+			fehler1.setVisible(false);
+			fehler2.setVisible(true);
+			
+		} else if ((titelField.getText().equals("")) && (profNameField.getText().equals(""))) {
+			
+			fehler1.setVisible(true);
+			fehler2.setVisible(true);
+			
+		} else if (!(titelField.getText().equals("")) && !(profNameField.getText().equals(""))){
+		
+			fehler1.setVisible(false);
+			fehler2.setVisible(false);
 				
-				//for(Vorlesung v : VLSucheMain.verzeichnis) {
-					//VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
-					/*if (this.title.equalsIgnoreCase(v.getTitel()) && this.profName.equalsIgnoreCase(v.getProf()) && this.semester.equalsIgnoreCase(v.getSemester())) {
-						//istEnthalten = true;
-						VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
-					}*/
-				//}
-				
-				/*if(istEnthalten == false) {
-					VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
-					System.out.println(istEnthalten);
-					titelField.setText(null);
-				} else {
-					titelField.setText("Ihre Eingabe war ein Duplikat!");
-				}
-				*/
-				//System.out.println(VLSucheMain.verzeichnis.size());
-				//System.out.println(new Vorlesung(title, profName, semester));
-				
-				titelField.setText(null);
-				profNameField.setText(null);
-				ws.setSelected(true);
+			title = titelField.getText();
+			profName = profNameField.getText();
+			
+			if (ws.isSelected()) {
+				semester = "Wintersemester";
+			} else {
+				semester = "Sommersemester";
+			}
+			
+			//Vorlesung zu TreeSet hinzufügen
+			VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
+			
+			// Felder zurück in Default Einstellung setzen
+			titelField.setText(null);
+			profNameField.setText(null);
+			ws.setSelected(true);
 			
 		}
 	}

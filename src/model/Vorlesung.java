@@ -4,7 +4,7 @@ package model;
  * Diese Klasse definiert das Object Vorlesung
  * 
  * @author Henrik Bülow - ucxbi@student.kit.edu
- * @version 2020-06-02
+ * @version 2020-06-04
  * 
  */
 
