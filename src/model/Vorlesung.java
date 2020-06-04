@@ -54,6 +54,6 @@ public class Vorlesung {
 	}
 	
 	public String toString() {
-		return "Titel: " + this.titel + "     Professor: " + this.prof + "     Semester: " + this.semester;
+		return this.titel + "     Prof: " + this.prof + "     " + this.semester;
 	}
 }

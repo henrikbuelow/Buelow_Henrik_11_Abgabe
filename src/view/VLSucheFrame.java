@@ -22,10 +22,11 @@ public class VLSucheFrame extends JFrame{
 	Container c;
 	
 	// Erstes Panel
-	JLabel ersteAufforderung;
-	
-	// Zweites Panel
+		JPanel erstes;
+		
+	// Panel erstes
 	JPanel enter;
+	JLabel ersteAufforderung;
 	
 	// JPanel enter
 	JPanel ersteEingabe;
@@ -58,11 +59,12 @@ public class VLSucheFrame extends JFrame{
 	JRadioButton ws;
 	ButtonGroup semesterGruppe;
 	
-	// Drittes Panel
-	JLabel zweiteAufforderung;
+	// Zweites Panel
+	JPanel zweites;
 	
-	// Viertes Panel 
+	// JPanel zweites
 	JPanel enter2;
+	JLabel zweiteAufforderung;
 	
 	// JPanel enter2
 	JPanel zweiteEingabe;
@@ -95,7 +97,7 @@ public class VLSucheFrame extends JFrame{
 	JRadioButton ws2;
 	ButtonGroup semesterGruppe2;
 	
-	// Fuenftes Panel
+	// Drittes Panel
 	JLabel ergebnisTitel;
 	
 	// Sechstes Panel
@@ -104,8 +106,8 @@ public class VLSucheFrame extends JFrame{
 	JList<String> ergebnisse;
 	
 	//siebtes Panel
-	JPanel kleiner1;
-	JPanel kleiner2;
+	//JPanel kleiner1;
+	//JPanel kleiner2;
 	JButton export;
 	ButtonListenerExport ex;
 	
@@ -117,18 +119,20 @@ public class VLSucheFrame extends JFrame{
 		
 		// Allgemein
 		c = getContentPane();
-		c.setLayout(new GridLayout(7,1));
+		c.setLayout(new GridLayout(3,1));
 		ueberschrift = new Font("Tahoma", Font.BOLD, 15);
 
-		
 		// Erstes Panel aufbauen
+		erstes = new JPanel(new GridLayout(2,1));
+		c.add(erstes);
+		
+		//JPanel erstes aufbauen
 		ersteAufforderung = new JLabel("Fügen Sie eine neue Vorlesung hinzu", SwingConstants.CENTER);
 		ersteAufforderung.setFont(ueberschrift);
-		c.add(ersteAufforderung);
+		erstes.add(ersteAufforderung);
 		
-		// Zweites Panel aufbauen
 		enter = new JPanel(new GridLayout(2,1));
-		c.add(enter);
+		erstes.add(enter);
 		
 		// JPanel ersteEingabe
 		ersteEingabe = new JPanel(new GridLayout(1,3));
@@ -186,14 +190,17 @@ public class VLSucheFrame extends JFrame{
 		enterButton.addActionListener(hinzu);
 		enterUnten.add(enterButton);
 		
-		// Drittes Panel aufbauen
+		// Zweites Panel aufbauen
+		zweites = new JPanel(new GridLayout(2,1));
+		c.add(zweites);
+		
+		// JPanel zweites aufbauen
 		zweiteAufforderung = new JLabel("Suchen Sie nach Ihrer Vorlesung", SwingConstants.CENTER);
 		zweiteAufforderung.setFont(ueberschrift);
-		c.add(zweiteAufforderung);
+		zweites.add(zweiteAufforderung);
 		
-		// Viertes Panel aufbauen
 		enter2 = new JPanel(new GridLayout(2,1));
-		c.add(enter2);
+		zweites.add(enter2);
 		
 		// JPanel zweiteEingabe
 		zweiteEingabe = new JPanel(new GridLayout(1,2));
@@ -251,7 +258,7 @@ public class VLSucheFrame extends JFrame{
 		neueSuche.setVisible(false);
 		
 		// Fuenftes Panel aufbauen
-		ergebnisTitel = new JLabel("Ergebnisse Ihrer Suche", SwingConstants.CENTER);
+		ergebnisTitel = new JLabel("Ergebnisse Ihrer Suche:         ", SwingConstants.LEFT);
 		ergebnisTitel.setFont(ueberschrift);
 		c.add(ergebnisTitel);
 		
@@ -259,6 +266,7 @@ public class VLSucheFrame extends JFrame{
 		list = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		//list.setPreferredSize(new Dimension(1000,1000));
 		c.add(list);
+		list.add(ergebnisTitel);
 		//model = new DefaultListModel<>();
 		//ergebnisse = new JList<>( model );
 		//ergebnisse = new JList<String>();
@@ -283,15 +291,15 @@ public class VLSucheFrame extends JFrame{
 		neueSuche.addActionListener(neueS);
 		
 		// Siebtes Panel aufbauen
-		kleiner1 = new JPanel(new GridLayout(1,3));
+		/*kleiner1 = new JPanel(new GridLayout(1,3));
 		c.add(kleiner1);
 		kleiner2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		kleiner1.add(kleiner2);
+		kleiner1.add(kleiner2);*/
 		export = new JButton("Ergebnisse in Text-Datei schreiben");
 		ex = new ButtonListenerExport(export);
 		export.addActionListener(ex);
 		//export.setVisible(false);
-		kleiner2.add(export);
+		enterUnten2.add(export);
 		
 	}
 }
