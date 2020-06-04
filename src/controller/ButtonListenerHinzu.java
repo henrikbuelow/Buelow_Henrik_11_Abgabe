@@ -30,45 +30,65 @@ public class ButtonListenerHinzu implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if ((titelField.getText().equals("")) && !(profNameField.getText().equals(""))) { 
-			
-			fehler1.setVisible(true); 
-			fehler2.setVisible(false);
-			
-		} else if (!(titelField.getText().equals("")) && (profNameField.getText().equals(""))) { 
-			
-			fehler1.setVisible(false);
-			fehler2.setVisible(true);
-			
-		} else if ((titelField.getText().equals("")) && (profNameField.getText().equals(""))) {
+		if (titelField.getText().equalsIgnoreCase("Ihre Eingabe war ein Duplikat!")) {
 			
 			fehler1.setVisible(true);
-			fehler2.setVisible(true);
-			
-		} else if (!(titelField.getText().equals("")) && !(profNameField.getText().equals(""))){
-		
-			fehler1.setVisible(false);
-			fehler2.setVisible(false);
-				
-			title = titelField.getText();
-			profName = profNameField.getText();
-			
-			if (ws.isSelected()) {
-				semester = "Wintersemester";
-			} else {
-				semester = "Sommersemester";
-			}
-			
-			VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
-		
-			System.out.println(VLSucheMain.verzeichnis.size());
-			System.out.println(new Vorlesung(title, profName, semester));
-			
 			titelField.setText(null);
-			profNameField.setText(null);
-			ws.setSelected(true);
+			
+		} else {
 		
+			if ((titelField.getText().equals("")) && !(profNameField.getText().equals(""))) { 
+				
+				fehler1.setVisible(true); 
+				fehler2.setVisible(false);
+				
+			} else if (!(titelField.getText().equals("")) && (profNameField.getText().equals(""))) { 
+				
+				fehler1.setVisible(false);
+				fehler2.setVisible(true);
+				
+			} else if ((titelField.getText().equals("")) && (profNameField.getText().equals(""))) {
+				
+				fehler1.setVisible(true);
+				fehler2.setVisible(true);
+				
+			} else if (!(titelField.getText().equals("")) && !(profNameField.getText().equals(""))){
+			
+				fehler1.setVisible(false);
+				fehler2.setVisible(false);
+					
+				title = titelField.getText();
+				profName = profNameField.getText();
+				
+				if (ws.isSelected()) {
+					semester = "Wintersemester";
+				} else {
+					semester = "Sommersemester";
+				}
+				
+				boolean istEnthalten = false;
+				
+				for(Vorlesung v : VLSucheMain.verzeichnis) {
+					if (this.title.equalsIgnoreCase(v.getTitel()) && this.profName.equalsIgnoreCase(v.getProf()) && this.semester.equalsIgnoreCase(v.getSemester())) {
+						istEnthalten = true;
+					}
+				}
+				
+				if(istEnthalten == false) {
+					VLSucheMain.verzeichnis.add(new Vorlesung(title, profName, semester));
+					System.out.println(istEnthalten);
+					titelField.setText(null);
+				} else {
+					titelField.setText("Ihre Eingabe war ein Duplikat!");
+				}
+				
+				//System.out.println(VLSucheMain.verzeichnis.size());
+				//System.out.println(new Vorlesung(title, profName, semester));
+				
+				profNameField.setText(null);
+				ws.setSelected(true);
+			
+			}
 		}
 	}
-	
 }
