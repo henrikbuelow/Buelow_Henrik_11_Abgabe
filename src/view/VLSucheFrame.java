@@ -148,7 +148,7 @@ public class VLSucheFrame extends JFrame{
 		ersteEingabe.add(semester);
 		
 		// JPanel titel aufbauen
-		titelSchrift = new JLabel("Titel der VL", SwingConstants.CENTER);
+		titelSchrift = new JLabel("Titel der Vorlesung", SwingConstants.CENTER);
 		titel.add(titelSchrift);
 		titelFeld = new JTextField();
 		titel.add(titelFeld);
