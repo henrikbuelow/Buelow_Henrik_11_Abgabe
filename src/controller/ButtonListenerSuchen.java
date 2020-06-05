@@ -89,7 +89,7 @@ public class ButtonListenerSuchen implements ActionListener {
 			
 			// Suche nach allen übereinstimmenden Vorlesungen 
 			for (Vorlesung v : VLSucheMain.verzeichnis) {
-				if (v.getProf().equals(prof) && v.getSemester().equals(semester)) {
+				if (v.getProf().equalsIgnoreCase(prof) && v.getSemester().equalsIgnoreCase(semester)) {
 					VLSucheMain.suche.add(v);
 				}
 			}
